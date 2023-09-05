@@ -83,11 +83,19 @@ typedef struct MaxLearned_t {
 }MaxLearned_t;
 
 
+typedef struct MaxLED_t {
+	uint16_t cfg1;
+	uint16_t cfg2;
+	uint16_t cfg3;
+}MaxLED_t;
+
+
 // full max17263 data structure
 typedef struct Max17263_t {
 	MaxConfig_t config;		// chosen config settings
 	MaxFuelGauge_t gauge;	// fuel gauge reading
 	MaxLearned_t learned;	// learned params, read every time Cycles.bit6 toggles	
+	MaxLED_t led;			// LED settings
 }Max17263_t;
 
 
@@ -108,9 +116,18 @@ void max_debugLED(void);
 // max17263 functionality 
 uint16_t max_checkPOR(void);
 void max_loadConfig(Max17263_t* max);
+void max_initLED(void);
 void max_readFuelGauge(Max17263_t* max);
 uint8_t max_checkCycles(Max17263_t* max);
 void max_saveLearnedParameters(Max17263_t* max);
+
+void max_setLEDBars(uint8_t bars);
+void max_setLEDGrayScale(uint8_t state);
+void max_setLEDChargeIndicator(uint8_t lchg);
+void max_setLEDMode(uint8_t md);
+void max_setLEDAniMode(uint8_t md);
+void max_setLEDAniStep(uint8_t step);
+void max_setLEDTimer(uint8_t time);
 
 // max17263 save/load functions
 void max_eepromSaveParameters(Max17263_t* max);

@@ -5,6 +5,35 @@
  *  Author: Ellis Hobby
  */ 
 
+typedef struct {
+	unsigned b0: 1;
+	unsigned b1: 1;
+	unsigned b2: 1;
+	unsigned b3: 1;
+	unsigned b4: 1;
+	unsigned b5: 1;
+	unsigned b6: 1;	
+	unsigned b7: 1;
+}BitField8_t;
+
+typedef struct {
+	unsigned b0: 1;
+	unsigned b1: 1;
+	unsigned b2: 1;
+	unsigned b3: 1;
+	unsigned b4: 1;
+	unsigned b5: 1;
+	unsigned b6: 1;
+	unsigned b7: 1;
+	unsigned b8: 1;
+	unsigned b9: 1;
+	unsigned b10: 1;
+	unsigned b11: 1;
+	unsigned b12: 1;
+	unsigned b13: 1;
+	unsigned b14: 1;
+	unsigned b15: 1;
+}BitField16_t;
 
 /*
 */
@@ -230,22 +259,46 @@
 */
 #define LEDCfg1_ADDR		0x40
 #define LEDCfg1_DEF			0x6070
-#define LEDTIMER_2	(1 << 15)
-#define LEDTIMER_1	(1 << 14)
-#define LEDTIMER_0	(1 << 13)
-#define ANISTEP_2	(1 << 12)
-#define ANISTEP_1	(1 << 11)
-#define ANISTEP_0	(1 << 10)
-#define ANIMD_1		(1 << 9)
-#define ANIMD_0		(1 << 8)
-#define LEDMD_1		(1 << 7)
-#define LEDMD_0		(1 << 6)
+#define LEDTimer_2	(1 << 15)
+#define LEDTimer_1	(1 << 14)
+#define LEDTimer_0	(1 << 13)
+#define AniStep_2	(1 << 12)
+#define AniStep_1	(1 << 11)
+#define AniStep_0	(1 << 10)
+#define AniMd_1		(1 << 9)
+#define AniMd_0		(1 << 8)
+#define LEDMd_1		(1 << 7)
+#define LEDMd_0		(1 << 6)
 #define LCHG		(1 << 5)
 #define GREN		(1 << 4)
-#define NBARS_3		(1 << 3)
-#define NBARS_2		(1 << 2)
-#define NBARS_1		(1 << 1)
-#define NBARS_0		(1 << 0)
+#define NBars_3		(1 << 3)
+#define NBars_2		(1 << 2)
+#define NBars_1		(1 << 1)
+#define NBars_0		(1 << 0)
+
+
+typedef struct {
+	unsigned Nbars		: 4;
+	unsigned GrEn		: 1;
+	unsigned LChg		: 1;
+	unsigned LEDMd		: 2;
+	unsigned AniMd		: 2;
+	unsigned AniStep	: 3;
+	unsigned LEDTimer	: 3;		
+}__LEDCfg1bits_t;
+
+typedef union {
+	__LEDCfg1bits_t bits;
+	uint16_t bytes;	
+}LEDCfg1;
+
+
+#define NBARS_MASK		0x000F
+#define LEDMd_MASK		0xFF2F
+#define AniMd_MASK		0xFCFF
+#define AniStep_MASK	0xE3FF
+#define LEDTimer_MASK	0x1FFF
+
 
 /*
 */

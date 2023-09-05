@@ -1,11 +1,12 @@
 #include <Wire.h>
 
 #define MAX17263_STARTUP        0xAAAA
-#define MAX17263_POR            0xBBBB
-#define MAX17263_STRUCT         0xCCCC
-#define MAX17263_EEPROM         0xDDDD
-#define MAX17263_EEPROM_INIT	  0xEEEE
-#define MAX17263_FUEL_GAUGE 	  0xAABB
+#define MAX17263_STARTUP_DONE   0xBBBB
+#define MAX17263_POR            0xCCCC
+#define MAX17263_STRUCT         0xDDDD
+#define MAX17263_EEPROM         0xEEEE
+#define MAX17263_EEPROM_INIT	  0xAABB
+#define MAX17263_FUEL_GAUGE 	  0xCCDD
 
 
 
@@ -61,7 +62,10 @@ void i2c_event(int len) {
       case MAX17263_STARTUP:
         Serial.println("Startup Sequence...");
         break;
-        
+      
+      case MAX17263_STARTUP_DONE:
+        Serial.println("Startup Sequence Complete");
+        break;
 
       case MAX17263_POR:
         Serial.println("Power On Reset (POR) Detected...");

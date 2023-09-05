@@ -31,7 +31,7 @@ int main(void){
 	PORTD &= ~((1 << PORTD0) | (1 << PORTD1));
 	DDRD  &= ~((1 << PORTD0) | (1 << PORTD1));
 
-	i2c_init(F_CPU, I2C_SCL_400KHZ);
+	i2c_init(F_CPU, I2C_SCL_100KHZ);
 	
 	if (DEBUG)
 		max_debugWrite(DEBUG_ADDR, DEBUG_STARTUP_CODE);
@@ -49,9 +49,6 @@ int main(void){
 		
 		// power on reset has occured	
 		if (max_checkPOR()) {
-			
-			if (DEBUG)	
-				max_debugWrite(DEBUG_ADDR, DEBUG_POR_CODE);
 			
 			// configure
 			max_loadConfig(&max);

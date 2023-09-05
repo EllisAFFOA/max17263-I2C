@@ -317,7 +317,11 @@ void max_loadConfig(Max17263_t* max) {
 	uint16_t buffer;
 	uint8_t check_flag = 0;
 	
+	if (DEBUG)
+		max_debugWrite(DEBUG_ADDR, DEBUG_POR_CODE);
+	
 	// check to see if saved parameters exits
+	// (should be value 0xBEEF at address 0x00)
 	buffer = eeprom_read_word((uint16_t*)EEPROM_CHECK_ADDR);
 	
 	// if no saved parameters initialize eeprom and flag
@@ -354,7 +358,7 @@ void max_loadConfig(Max17263_t* max) {
 		max_eepromSaveParameters(max);
 	}
 	
-	// else we can load the learned parameters from eeprom
+	// otherwise we can load the learned parameters from eeprom
 	else {
 		max_eepromLoadParameters(max);
 	}
@@ -368,8 +372,89 @@ void max_loadConfig(Max17263_t* max) {
 	
 	max_writeRegister(HibCFG_ADDR, buffer);						// restore original hibernate settings
 	
+	max_initLED();
+	
 	buffer = max_readRegister(Status_ADDR);						// read status
 	max_writeAndVerifyRegister(Status_ADDR, (buffer & ~POR));	// clear por bit
+}
+
+
+void max_initLED(void) {
+	max_writeRegister(LEDCfg1_ADDR, 0x6074);
+	
+	max_setLEDBars(4);
+	max_setLEDChargeIndicator(1);
+	max_setLEDGrayScale(1);
+	max_setLEDAniMode(2);
+	max_setLEDAniStep(7);
+	max_setLEDTimer(7);
+	max_setLEDMode(3)
+	
+	max_writeRegister(LEDCfg2_ADDR, 0x011f);
+	max_writeRegister(LEDCfg3_ADDR, LEDCfg3_DEF);
+}
+
+
+void max_setLEDBars(uint8_t bars) {
+	uint16_t buffer = max_readRegister(LEDCfg1_ADDR) & NBARS_MASK;
+	buffer |= (bars & 0x0F);
+	max_writeRegister(LEDCfg1_ADDR, buffer);
+}
+
+
+void max_setLEDGrayScale(uint8_t state) {
+	uint16_t buffer = max_readRegister(LEDCfg1_ADDR);
+	if (state >= 1) 
+		buffer |= GrEn;
+	else 
+		buffer &= ~GrEn;
+	max_writeRegister(LEDCfg1_ADDR, buffer);
+}
+
+
+void max_setLEDChargeIndicator(uint8_t lchg) {
+	uint16_t buffer = max_readRegister(LEDCfg1_ADDR);
+	if (lchg >= 1) 
+		buffer |= LChg;
+	else 
+		buffer &= ~LChg;
+	max_writeRegister(LEDCfg1_ADDR, buffer);
+}
+
+
+void max_setLEDMode(uint8_t md) {
+	uint16_t buffer = max_readRegister(LEDCfg1_ADDR);
+	if (md > 0x03)
+		md = 0x03;
+	buffer |= (md << 6);
+	max_writeRegister(LEDCfg1_ADDR, buffer);
+}
+
+
+void max_setLEDAniMode(uint8_t md) {
+	uint16_t buffer = max_readRegister(LEDCfg1_ADDR);
+	if (md > 0x03)
+		md = 0x03;
+	buffer |= (md << 8);
+	max_writeRegister(LEDCfg1_ADDR, buffer);
+}
+
+
+void max_setLEDAniStep(uint8_t step) {
+	uint16_t buffer = max_readRegister(LEDCfg1_ADDR);
+	if (step > 0x07)
+		step = 0x07;
+	buffer |= (step << 10);
+	max_writeRegister(LEDCfg1_ADDR, buffer);
+}
+
+
+void max_setLEDTimer(uint8_t time) {
+	uint16_t buffer = max_readRegister(LEDCfg1_ADDR);
+	if (time > 0x07)
+		time = 0x07;
+	buffer |= (time << 13);
+	max_writeRegister(LEDCfg1_ADDR, buffer);
 }
 
 
@@ -401,16 +486,19 @@ uint8_t max_checkCycles(Max17263_t* max) {
 	
 	uint16_t buffer = max_readRegister(Cycles_ADDR);	// read cycles register
 	
+	if (DEBUG) {
+		max_debugRead(DEBUG_ADDR, Cycles_ADDR);
+	}
+	
 	// compare bit 6 of reading to last saved value 
 	if((buffer & Cycles_B6) != (max->learned.cycles & Cycles_B6)) {
 		max->learned.cycles = buffer;
 		return 1;	// return 1 when toggled
 	}
 	else {
+		max->learned.cycles = buffer;
 		return 0;
 	}
-	
-	max->learned.cycles = buffer;
 }
 
 
