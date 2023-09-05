@@ -126,7 +126,7 @@ int main(void){
 	// load configuration settings
 	max_loadConfig();
 	
-	#ifdef DEBUG
+	#ifdef I2C_DEBUG
 		max_debugWrite(DEBUG_ADDR, DEBUG_DONE_STARTUP_CODE);
 	#endif
 	
