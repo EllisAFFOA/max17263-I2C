@@ -216,8 +216,8 @@ void max_loadConfig(void) {
 
 
 /***********************************************************
- *
  * 
+ * LED config settings
  *
  ***********************************************************/
 void max_setLEDBars(uint8_t bars) {
@@ -255,12 +255,6 @@ void max_setLEDTimer(uint8_t time) {
 	max_writeRegister(LEDCfg1_REG_ADDR, max17263.LEDCfg1.value);
 }
 
-
-/***********************************************************
- *
- *
- *
- ***********************************************************/
  void max_setLEDBrightness(uint8_t brightness) {
 	max17263.LEDCfg2.bit.Brightness = brightness;
 	max_writeRegister(LEDCfg2_REG_ADDR, max17263.LEDCfg2.value);

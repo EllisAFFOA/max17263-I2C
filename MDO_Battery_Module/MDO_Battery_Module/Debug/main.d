@@ -23,10 +23,9 @@ main.d main.o: .././main.c \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\util\delay.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\util\delay_basic.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\math.h .././i2c.h \
- c:\program\ files\microchip\xc8\v2.36\avr\avr\include\util\twi.h \
- .././max17263.h \
  c:\program\ files\microchip\xc8\v2.36\avr\lib\gcc\avr\5.4.0\include\stdbool.h \
- .././max17263_regmap.h
+ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\util\twi.h \
+ .././max17263.h .././max17263_regmap.h
 
 c:\program\ files\microchip\xc8\v2.36\avr\lib\gcc\avr\5.4.0\include\xc.h:
 
@@ -78,10 +77,10 @@ c:\program\ files\microchip\xc8\v2.36\avr\avr\include\math.h:
 
 .././i2c.h:
 
+c:\program\ files\microchip\xc8\v2.36\avr\lib\gcc\avr\5.4.0\include\stdbool.h:
+
 c:\program\ files\microchip\xc8\v2.36\avr\avr\include\util\twi.h:
 
 .././max17263.h:
-
-c:\program\ files\microchip\xc8\v2.36\avr\lib\gcc\avr\5.4.0\include\stdbool.h:
 
 .././max17263_regmap.h:

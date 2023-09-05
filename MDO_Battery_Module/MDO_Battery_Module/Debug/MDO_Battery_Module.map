@@ -622,18 +622,18 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x33ae
+.debug_info     0x0000000000000000     0x33b7
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x9f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const/crtatmega32u4.o
- .debug_info    0x00000000000009f4      0x51e i2c.o
- .debug_info    0x0000000000000f12      0x60b main.o
- .debug_info    0x000000000000151d     0x1a8c max17263.o
- .debug_info    0x0000000000002fa9       0xab C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eerd_word.o)
- .debug_info    0x0000000000003054       0xac C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eeupd_word.o)
- .debug_info    0x0000000000003100       0xab C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eewr_word.o)
- .debug_info    0x00000000000031ab       0xac C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eerd_block.o)
- .debug_info    0x0000000000003257       0xac C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eeupd_byte.o)
- .debug_info    0x0000000000003303       0xab C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eewr_byte.o)
+ .debug_info    0x00000000000009f4      0x527 i2c.o
+ .debug_info    0x0000000000000f1b      0x60b main.o
+ .debug_info    0x0000000000001526     0x1a8c max17263.o
+ .debug_info    0x0000000000002fb2       0xab C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eerd_word.o)
+ .debug_info    0x000000000000305d       0xac C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eeupd_word.o)
+ .debug_info    0x0000000000003109       0xab C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eewr_word.o)
+ .debug_info    0x00000000000031b4       0xac C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eerd_block.o)
+ .debug_info    0x0000000000003260       0xac C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eeupd_byte.o)
+ .debug_info    0x000000000000330c       0xab C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/xc8/avr/lib/avr5/memx-const\libatmega32u4.a(eewr_byte.o)
 
 .debug_abbrev   0x0000000000000000      0xf62
  *(.debug_abbrev)

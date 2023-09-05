@@ -145,10 +145,10 @@ void i2c_stop (void) {
  * @param addr	 : target device address
  * @param data	 : packet byte array 
  * @param len	 : packet length 
- * @param repeat : leave connection open = 1 
+ * @param repeat : leave connection open?
  *
  ***********************************************************/
-uint8_t i2c_controller_transmit(uint8_t addr, uint8_t* data, uint8_t len, uint8_t repeat) {
+uint8_t i2c_controller_transmit(uint8_t addr, uint8_t* data, uint8_t len, bool repeat) {
 	
 	uint8_t err;
 	

@@ -1,4 +1,5 @@
 i2c.d i2c.o: .././i2c.c .././i2c.h \
+ c:\program\ files\microchip\xc8\v2.36\avr\lib\gcc\avr\5.4.0\include\stdbool.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\util\twi.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\io.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\sfr_defs.h \
@@ -15,6 +16,8 @@ i2c.d i2c.o: .././i2c.c .././i2c.h \
  c:\program\ files\microchip\xc8\v2.36\avr\avr\include\avr\lock.h
 
 .././i2c.h:
+
+c:\program\ files\microchip\xc8\v2.36\avr\lib\gcc\avr\5.4.0\include\stdbool.h:
 
 c:\program\ files\microchip\xc8\v2.36\avr\avr\include\util\twi.h:
 
