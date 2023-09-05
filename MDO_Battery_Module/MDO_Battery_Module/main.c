@@ -95,9 +95,6 @@ void process_battery(void) {
 
 	#ifdef I2C_DEBUG
 		max_readFuelGauge();
-	#endif
-	
-	#ifdef I2C_DEBUG
 		max_debugDataStruct();
 		max_debugEEPROM();
 	#endif
